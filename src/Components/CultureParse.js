@@ -77,6 +77,9 @@ const CultureParse = () => {
 
   return (
     <div className="App">
+      <div style={{background: '#AF9CE5', color: 'white'}}>
+        <h1>Culture Parse</h1>
+      </div>
       Enter text to be parsed below:
       <div>
         <textarea type="text" value={rawData} onChange={(event) => setFormData(event.target.value)} rows="4" cols="50" />
@@ -98,6 +101,7 @@ const CultureParse = () => {
         {Object.entries(keyData).map(([key, count]) => <div>{count}: <button onClick={() => incrementKey(key)}>{key}</button></div>)}
       </div>
       &nbsp;
+      <div />
       {prettyPrint()}
     </div>
   );
