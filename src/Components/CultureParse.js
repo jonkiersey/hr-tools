@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import AutosizeInput from 'react-input-autosize';
 
 const CultureParse = () => {
   const [formData, setFormData] = useState('');
@@ -78,11 +79,11 @@ const CultureParse = () => {
     <div className="App">
       Enter text to be parsed below:
       <div>
-        <input type="text" value={rawData} onChange={(event) => setFormData(event.target.value)} />
+        <textarea type="text" value={rawData} onChange={(event) => setFormData(event.target.value)} rows="4" cols="50" />
       </div>
       &nbsp;
       <div>
-        <input type="text" value={textToSave} onChange={(event) => setTextToSave(event.target.value)} />&nbsp;
+        <AutosizeInput type="text" value={textToSave} onChange={(event) => setTextToSave(event.target.value)} />&nbsp;
         <input type="number" value={startingNumber} onChange={(event) => setStartingNumber(parseInt(event.target.value, 10))} />
       </div>
       <div>
