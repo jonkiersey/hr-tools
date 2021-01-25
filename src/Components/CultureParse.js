@@ -29,7 +29,7 @@ const CultureParse = () => {
     const prettyData = sortedData.map(([key, count]) => (
       <>
         <span style={{fontWeight: 'bold'}}>
-          {count > 1 && `(${count})`} {key.slice(0, key.indexOf(' ')).trim()}
+          {count > 1 && ` (${count})`} {key.slice(0, key.indexOf(' ')).trim()}
         </span>
         &nbsp;{key.slice(key.indexOf(' ')).trim()}.
       </>
@@ -84,7 +84,9 @@ const CultureParse = () => {
       &nbsp;
       <div>
         <AutosizeInput type="text" value={textToSave} onChange={(event) => setTextToSave(event.target.value)} />&nbsp;
-        <input type="number" value={startingNumber} onChange={(event) => setStartingNumber(parseInt(event.target.value, 10))} />
+      </div>
+      <div>
+        <input type="number" style={{ width: 50 }} value={startingNumber} onChange={(event) => setStartingNumber(parseInt(event.target.value, 10))} />
       </div>
       <div>
         <button onClick={advanceCurrent}>Next/Ignore</button>&nbsp;
