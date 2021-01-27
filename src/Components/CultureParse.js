@@ -89,8 +89,9 @@ const CultureParse = () => {
 
   return (
     <div className="App">
-      <div style={{ background: '#AF9CE5', color: 'white' }}>
+      <div style={{ background: '#3FB296', color: 'white' }}>
         <h1>Culture Parse</h1>
+        <h5>v1.1.0</h5>
       </div>
       <div style={{ textAlign: 'right' }}>
         <button onClick={clear}>Clear</button>&nbsp;
