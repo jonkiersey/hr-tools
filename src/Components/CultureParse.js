@@ -113,7 +113,7 @@ const CultureParse = () => {
       </div>
       &nbsp;
       <div>
-        {Object.entries(keyData).map(([key, count]) => <div>{count}: <button onClick={() => incrementKey(key)}>{key}</button></div>)}
+        {Object.entries(keyData).sort((a, b) => b[1] - a[1]).map(([key, count]) => <div>{count}: <button onClick={() => incrementKey(key)}>{key}</button></div>)}
       </div>
       &nbsp;
       <div />
