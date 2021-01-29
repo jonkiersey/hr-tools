@@ -8,9 +8,10 @@ const CultureParse = () => {
   const [textToSave, setTextToSave] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [occurencesFromString, setOccurencesFromString] = useState(1);
+  const [newEntryDisabled, setNewEntryDisabled] = useState(false);
 
   useEffect(() => {
-    setSentences(rawData.split('.').map((sentence) => sentence.trim()));
+    setSentences(rawData.split(/[.!?]/).map((sentence) => sentence.trim()));
     setCurrentIndex(0);
   }, [rawData]);
 
@@ -36,6 +37,18 @@ const CultureParse = () => {
     setOccurencesFromString(maybeNumber ? maybeNumber : 1);
     setTextToSave(nextSentence);
   }, [sentences]);
+
+  const trimNumbers = (sentence) => {
+    const regex = new RegExp(/^\(\d+\)/);
+    if (regex.test(sentence)) {
+      return sentence.slice(sentence.indexOf(')') + 1);
+    }
+    return sentence;
+  }
+
+  useEffect(() => {
+    setNewEntryDisabled(Object.keys(keyData).includes(trimNumbers(textToSave)));
+  }, [textToSave, keyData])
 
   const prettyPrint = () => {
     const sortedData = Object.entries(keyData).sort((a, b) => b[1] - a[1]);
@@ -77,7 +90,7 @@ const CultureParse = () => {
   };
 
   const newEntry = () => {
-    setKeyData({ ...keyData, [textToSave.trim()]: occurencesFromString });
+    setKeyData({ ...keyData, [trimNumbers(textToSave).trim()]: occurencesFromString });
     advanceCurrent();
   };
 
@@ -89,9 +102,9 @@ const CultureParse = () => {
 
   return (
     <div className="App">
-      <div style={{ background: '#3FB296', color: 'white' }}>
+      <div style={{ background: '#A568FD', color: 'white' }}>
         <h1>Culture Parse</h1>
-        <h5>v1.1.0</h5>
+        <h5>v1.2.0</h5>
       </div>
       <div style={{ textAlign: 'right' }}>
         <button onClick={clear}>Clear</button>&nbsp;
@@ -109,7 +122,7 @@ const CultureParse = () => {
       </div>
       <div>
         <button onClick={advanceCurrent}>Next/Ignore</button>&nbsp;
-        <button onClick={newEntry}>New Entry</button>&nbsp;
+        <button disabled={newEntryDisabled} onClick={newEntry}>New Entry</button>&nbsp;
         <button onClick={combine}>Combine</button>
       </div>
       &nbsp;
