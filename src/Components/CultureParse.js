@@ -67,6 +67,8 @@ const CultureParse = () => {
     return prettyData;
   };
 
+  const totalEntries = () => Object.values(keyData).reduce((acc, cur) => acc + cur, 0);
+
   const advanceCurrent = () => {
     const newIndex = currentIndex + 1;
     const nextSentence = sentences[newIndex];
@@ -102,9 +104,9 @@ const CultureParse = () => {
 
   return (
     <div className="App">
-      <div style={{ background: '#A568FD', color: 'white' }}>
+      <div style={{ background: '#FD68C0', color: 'white' }}>
         <h1>Culture Parse</h1>
-        <h5>v1.2.0</h5>
+        <h5>v1.3.0</h5>
       </div>
       <div style={{ textAlign: 'right' }}>
         <button onClick={clear}>Clear</button>&nbsp;
@@ -132,6 +134,12 @@ const CultureParse = () => {
       &nbsp;
       <div />
       {prettyPrint()}
+      <div>
+        <div>
+        &nbsp;
+        </div>
+        Total Entries: {totalEntries()}
+      </div>
     </div>
   );
 }
