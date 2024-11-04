@@ -22,7 +22,8 @@ const GetSampleData = ({ setData }) => {
       <button onClick={setSampleData}>Get Sample Data</button>
       <p>
         The purpose of this tool was to speed up the process of taking employee
-        sentiments collected through interviews and collate them into like ideas
+        sentiments collected through interviews and collating them into like
+        ideas
       </p>
     </div>
   );
